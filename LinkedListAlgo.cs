@@ -16,14 +16,14 @@ namespace Algorithms
 
         public class Node<U> 
         {
-            public T _data;
-            public Node<T> _prev, _next;
+            public T data;
+            public Node<T> prev, next;
 
-           public Node(T data, Node<T> prev,Node<T> next)
+           public Node(T pData, Node<T> pPrev,Node<T> pNext)
            {
-               _data = data;
-               _prev = prev;
-               _next = next;
+               data = pData;
+               prev = pPrev;
+               next = pNext;
 
            }
         }
@@ -32,8 +32,8 @@ namespace Algorithms
         {
             var trav = _head;
             while (trav != null) {
-                List.Add(trav._data);
-                trav = trav._next;
+                List.Add(trav.data);
+                trav = trav.next;
             }
             return List;
         }
@@ -54,8 +54,8 @@ namespace Algorithms
                _head = _tail = new Node<T>(elem, null, null);
            }
            else {
-               _tail._next = new Node<T>(elem, _tail, null);
-               _tail = _tail._next;
+               _tail.next = new Node<T>(elem, _tail, null);
+               _tail = _tail.next;
 
            }
 
@@ -69,8 +69,8 @@ namespace Algorithms
                _head = _tail = new Node<T>(elem, null, null);
            }
            else {
-               _head._prev = new Node<T>(elem, null, _head);
-               _head = _head._prev;
+               _head.prev = new Node<T>(elem, null, _head);
+               _head = _head.prev;
 
            }
 
@@ -84,7 +84,7 @@ namespace Algorithms
                throw new Exception("No found results");
            }
 
-           return _head._data;
+           return _head.data;
        }
 
        public T PeekLast()
@@ -94,7 +94,7 @@ namespace Algorithms
                throw new Exception("No found results");
            }
 
-           return _tail._data;
+           return _tail.data;
        }
 
        public T RemoveFirst()
@@ -106,11 +106,11 @@ namespace Algorithms
 
            var removedNode = _head;
 
-            _head = _head._next;
+            _head = _head.next;
 
-            _head._prev = null;
+            _head.prev = null;
 
-            return removedNode._data;
+            return removedNode.data;
        }       
    
     }
